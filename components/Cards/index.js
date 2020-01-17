@@ -22,6 +22,13 @@ axios.get("https://lambda-times-backend.herokuapp.com/articles")
 .then(res => console.log(res))
 .catch(error => console.log(error));
 
+let cardCon = document.querySelector('.cards-container')
+axios.get("https://lambda-times-backend.herokuapp.com/articles")
+.then(res => cardCon.append(articleFunction(res.data.articles.javascript[0])))
+.catch(error => console.log(error));
+
+
+
 function articleFunction(createArticle){
     let mainCard = document.createElement('div');
     let title = document.createElement('div');
@@ -41,7 +48,10 @@ function articleFunction(createArticle){
     writer.classList.add('author');
     picContainer.classList.add('img-container');
 
-    // title.textContent = createArticle.data.articles.
+    title.textContent = createArticle.headline;
+    // writer.textContent = createArticle.authorName;
+    picture.src = createArticle.authorPhoto;
+    name.textContent = createArticle.authorName;
 
-
+    return mainCard;
 }
