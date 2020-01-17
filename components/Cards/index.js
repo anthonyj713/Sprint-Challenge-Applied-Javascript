@@ -24,9 +24,17 @@ axios.get("https://lambda-times-backend.herokuapp.com/articles")
 
 let cardCon = document.querySelector('.cards-container')
 axios.get("https://lambda-times-backend.herokuapp.com/articles")
-.then(res => cardCon.append(articleFunction(res.data.articles.javascript[0])))
-.catch(error => console.log(error));
-
+    .then(res => {
+        console.log("Articles",res.data.articles)
+        for(const data in res.data.articles){
+            console.log("Single articles",res.data.articles[data])
+            for(articles in res.data.articles[data]){
+                console.log("Indexes",articles)
+                cardCon.append(articleFunction(res.data.articles[data][articles]))
+            }
+        }
+    })
+    .catch(error => console.log(error));
 
 
 function articleFunction(createArticle){
