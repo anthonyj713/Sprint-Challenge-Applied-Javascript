@@ -30,13 +30,23 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+Document Object Model. You can pretty much write HTML in JavaScript because of the DOM.
+
 2. What is an event?
+
+An event is when code is executed when an action happens from the user. An event can happen when the user clicks the mouse or strokes a key.
 
 3. What is an event listener?
 
+An event listener attaches and event to a specific element.
+
 4. Why would we convert a NodeList into an Array?
 
+We would convert a NodeList into an array so we could map or for loop through the data.
+
 5. What is a component?
+
+A component is a small block of reusable code.
 
 ### Git Set up
 

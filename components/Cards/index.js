@@ -57,7 +57,6 @@ function articleFunction(createArticle){
     picContainer.classList.add('img-container');
 
     title.textContent = createArticle.headline;
-    // writer.textContent = createArticle.authorName;
     picture.src = createArticle.authorPhoto;
     name.textContent = createArticle.authorName;
 
