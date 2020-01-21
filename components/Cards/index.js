@@ -17,3 +17,48 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+axios.get("https://lambda-times-backend.herokuapp.com/articles")
+.then(res => console.log(res))
+.catch(error => console.log(error));
+
+let cardCon = document.querySelector('.cards-container')
+axios.get("https://lambda-times-backend.herokuapp.com/articles")
+    .then(res => {
+        console.log("Articles",res.data.articles)
+        for(const data in res.data.articles){
+            console.log("Single articles",res.data.articles[data])
+            for(articles in res.data.articles[data]){
+                console.log("Indexes",articles)
+                cardCon.append(articleFunction(res.data.articles[data][articles]))
+            }
+        }
+    })
+    .catch(error => console.log(error));
+
+
+function articleFunction(createArticle){
+    let mainCard = document.createElement('div');
+    let title = document.createElement('div');
+    let writer = document.createElement('div');
+    let picContainer = document.createElement('div');
+    let picture = document.createElement('img');
+    let name = document.createElement('span');
+
+    mainCard.append(title);
+    mainCard.append(writer);
+    writer.append(picContainer);
+    picContainer.append(picture);
+    picContainer.append(name);
+
+    mainCard.classList.add('card');
+    title.classList.add('headline');
+    writer.classList.add('author');
+    picContainer.classList.add('img-container');
+
+    title.textContent = createArticle.headline;
+    picture.src = createArticle.authorPhoto;
+    name.textContent = createArticle.authorName;
+
+    return mainCard;
+}
